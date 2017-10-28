@@ -9,11 +9,12 @@
 
       public DbSet<Post> Posts { get; set; }
 
+      public DbSet<Log> Logs { get; set; }
 
       protected override void OnConfiguring(DbContextOptionsBuilder builder)
       {
          builder
-            .UseSqlServer(@"Server=.\SQL;Database=MoPDb;Integrated security=True;");
+            .UseSqlServer(@"Server=.;Database=MoPDb;Integrated security=True;");
       }
 
       protected override void OnModelCreating(ModelBuilder builder)

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ModPanel.App.Services.Contracts
 {
-    public interface ILogService
+   using Data.EntityModels;
+   using ViewModels.Logs;
+
+   public interface ILogService
     {
-        
-    }
+       void Create(string admin, LogType type, string additionalInformation);
+
+       IEnumerable<LogModel> All();
+
+   }
 }

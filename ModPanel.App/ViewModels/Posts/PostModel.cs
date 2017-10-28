@@ -2,13 +2,11 @@
 {
    using Infrastructure.Validation;
    using Infrastructure.Validation.Posts;
-   public class CreatePostModel
+   public class PostModel
    {
-
       [Required]
       [Title]
       public string Title { get; set; }
-
 
       [Required]
       [Content]

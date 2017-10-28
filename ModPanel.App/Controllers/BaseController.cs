@@ -1,15 +1,22 @@
 ﻿namespace ModPanel.App.Controllers
 {
+   using System.Linq;
    using Data;
    using Data.EntityModels;
-   using SimpleMvc.Framework.Controllers;
-   using System.Linq;
+   using Services;
+   using Services.Contracts;
    using SimpleMvc.Framework.Contracts;
+   using SimpleMvc.Framework.Controllers;
 
    public abstract class BaseController : Controller
    {
+
+      private readonly ILogService logs;
+
       protected BaseController()
       {
+         this.logs = new LogService();
+
          this.ViewModel["anonymousDisplay"] = "flex";
          this.ViewModel["userDisplay"] = "none";
          this.ViewModel["adminDisplay"] = "none";
@@ -36,6 +43,15 @@
          return this.Redirect("/users/login");
       }
 
+      protected void Log(LogType type, string additionalInformation)
+      {
+         this.logs.Create(
+            this.Profile
+               .Email,
+            type,
+            additionalInformation);
+      }
+
       protected override void InitializeController()
       {
          base.InitializeController();
@@ -59,6 +75,7 @@
          }
       }
 
+      
 
 
    }

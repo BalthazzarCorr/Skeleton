@@ -12,9 +12,10 @@ using System;
 namespace ModPanel.App.Data.Migrations
 {
     [DbContext(typeof(ModPanelDbContext))]
-    partial class ModPanelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171028220805_LogsTable")]
+    partial class LogsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

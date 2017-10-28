@@ -70,7 +70,7 @@
          }
       }
 
-      public void Approve(int id)
+      public string Approve(int id)
       {
          using (var db = new ModPanelDbContext())
          {
@@ -81,7 +81,10 @@
             }
 
             db.SaveChanges();
+
+            return user?.Email;
          }
+         
       }
    }
 }
