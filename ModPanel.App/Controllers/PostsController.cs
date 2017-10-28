@@ -26,14 +26,27 @@
          return View();
       }
 
+
+
       public IActionResult Create(CreatePostModel model)
       {
 
          if (!this.User.IsAuthenticated)
          {
             return RedirectToLogin();
+           
          }
-         return View();
+         if (!this.IsValidModel(model))
+         {
+            this.ShowError(CreateError);
+            return this.View();
+         }
+         this.posts.Create(
+            model.Title,
+            model.Content,
+            this.Profile.Id);
+
+         return this.RedirectToHome();
       }
    }
 }
